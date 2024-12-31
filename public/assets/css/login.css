@@ -146,4 +146,19 @@
     min-height: 52px;
     border: 1px solid transparent;
 }
+
+.development_banner{
+	padding: 0;
+	border: 0;
+	position: fixed;
+	right: -53px;
+	top: 4px;
+    z-index: 9;
+	padding: 10px 50px;
+	transform: rotate(40deg);
+	background-color: red;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: 900;
+}
 /* end  */
