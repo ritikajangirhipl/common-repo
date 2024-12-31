@@ -1,5 +1,5 @@
 <?php
-namespace Vendor\CommonPackage\Auth;
+namespace CommonPackage\Auth;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
@@ -36,6 +36,6 @@ class AuthService
 
         session()->put('previous_url', url()->previous());
 
-        return compact('credentials', 'remember');
+        return View::make('auth.login', compact('credentials', 'remember'));
     }
 }

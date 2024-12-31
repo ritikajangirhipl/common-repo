@@ -16,6 +16,13 @@
       "psr-4": {
         "Vendor\\CommonPackage\\": "src/"
       }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CommonPackage\\CommonPackage\\CommonServiceProvider"
+            ]
+        }
     }
   }
   
