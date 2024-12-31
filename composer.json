@@ -14,10 +14,8 @@
     },
     "autoload": {
       "psr-4": {
-        "Vendor\\CommonPackage\\": "src/"
+        "CommonPackage\\": "src/"
       }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
   }
   
