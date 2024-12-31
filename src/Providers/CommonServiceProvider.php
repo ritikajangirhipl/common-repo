@@ -12,7 +12,10 @@ class CommonServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'common');
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'common');
+        $this->publishes([
+            __DIR__.'/../../public/assets' => public_path('vendor/common-repo'),
+        ], 'public');
     }
 
     /**

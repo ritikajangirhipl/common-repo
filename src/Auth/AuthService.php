@@ -3,6 +3,7 @@ namespace Vendor\CommonPackage\Auth;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\View;
 
 class AuthService
 {
