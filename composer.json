@@ -20,7 +20,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "CommonPackage\\CommonPackage\\CommonServiceProvider"
+                "CommonPackage\\Providers\\CommonServiceProvider"
             ]
         }
     }
