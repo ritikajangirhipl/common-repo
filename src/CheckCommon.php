@@ -1,7 +1,7 @@
 <?php
 namespace Vendor\CommonPackage;
 
-class Test
+class CheckCommon
 {
     public static function sayHello() 
     {
