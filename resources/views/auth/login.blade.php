@@ -7,14 +7,14 @@
         <title>{{config('app.name')}}</title>
         <link href="{{asset('assets/images/favicon.svg')}}" rel="icon">
         <!-- font-awesome Start  -->
-        <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('vendor/common-repo/css/font-awesome.min.css') }}">
         <!-- Bootstrap css -->
-        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/common-repo/css/bootstrap.min.css') }}"> 
         <!-- toastr css -->
-        <link rel="stylesheet" href="{{asset('assets/toastr/toastr.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('vendor/common-repo/toastr/toastr.min.css') }}">
         <!-- style css -->
         <link rel="stylesheet" href="{{ asset('assets/css/theme.css')}}">
-        <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+        <link rel="stylesheet" href="{{ asset('vendor/common-repo/css/login.css') }}">
     </head>
 
     <body class="{{(config('app.env') == 'staging') ? 'staging-logged-in' : ''}}">
@@ -55,12 +55,12 @@
         @endif
         
         <!-- Jquery Library -->
-        <script src="{{asset('assets/js/jquery-3.7.1.min.js')}}"></script>
+        <script src="{{asset('vendor/common-repo/js/jquery-3.7.1.min.js')}}"></script>
         <!-- toastr js -->
-        <script src="{{asset('assets/toastr/toastr.min.js')}}"></script>
+        <script src="{{ asset('vendor/common-repo/toastr/toastr.min.js') }}"></script>
         <!-- Bootstrap Js -->
-        <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('assets/js/jquery.validate.min.js')}}"></script> 
+        <script src="{{asset('vendor/common-repo/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('vendor/common-repo/js/jquery.validate.min.js')}}"></script> 
 
        <script>
         $(document).ready(function(){

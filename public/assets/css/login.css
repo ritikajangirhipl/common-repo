@@ -130,4 +130,24 @@
 .mailstar{
     color: var(--red-color);
 }
+
+.nbtn {
+    background-color: var(--primary);
+    font-size: 16px;
+    font-weight: 600;
+    min-width: 285px;
+    position: relative;
+    border-radius: 4px;
+    color: var(--white-color);
+    display: inline-block;
+    text-align: center;
+    padding: 16px 15px;
+    box-shadow: 5px 8px 12px rgb(135 85 33 / 16%);
+    min-height: 52px;
+    border: 1px solid transparent;
+}
+
+.form_wrapper .nextstepbtn {
+    min-width: 100%;
+}
 /* end  */
