@@ -1,5 +1,5 @@
 <?php
-namespace CommonPackage\Providers;
+namespace Vendor\CommonPackage\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

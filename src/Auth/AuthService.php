@@ -1,5 +1,5 @@
 <?php
-namespace CommonPackage\Auth;
+namespace Vendor\CommonPackage\Auth;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
