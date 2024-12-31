@@ -1,6 +1,7 @@
 <?php
 namespace Vendor\CommonPackage\Providers;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class CommonServiceProvider extends ServiceProvider
@@ -13,9 +14,18 @@ class CommonServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'common');
-        $this->publishes([
-            __DIR__.'/../../public/assets' => public_path('vendor/common-repo'),
-        ], 'public');
+        Route::middleware('web')
+        ->group(function () {
+            Route::get('/vendor/common-repo/{path}', function ($path) {
+                $filePath = __DIR__ . '/../../public/assets/' . $path;
+
+                if (file_exists($filePath)) {
+                    return response()->file($filePath);
+                }
+
+                abort(404);
+            })->where('path', '.*');
+        });
     }
 
     /**

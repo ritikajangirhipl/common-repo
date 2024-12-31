@@ -37,6 +37,6 @@ class AuthService
 
         session()->put('previous_url', url()->previous());
 
-        return View::make('auth.login', compact('credentials', 'remember'));
+        return View::make('common::auth.login', compact('credentials', 'remember'));
     }
 }
