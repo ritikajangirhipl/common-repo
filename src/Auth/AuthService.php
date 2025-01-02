@@ -6,11 +6,24 @@ use Illuminate\Support\Facades\View;
 use Vendor\CommonPackage\Services\UserLoginService;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Validator;
 
 class AuthService
 {
     public static function handleLoginForm(array $data = [])
     {
+        $validator = Validator::make($data, [
+            'favicon' => 'required',
+            'loginbg' => 'required',
+            'logo' => 'required',
+            'infoIcon' => 'required',
+            'loginRoute' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }  
+
         $twoFactorAuthStatus = session()->has("logged_in_user_detail") ? session()->get("logged_in_user_detail") : [];
         $credentials = [];
         $remember = false;
@@ -47,6 +60,18 @@ class AuthService
 
     public static function handleLogin(array $data = [])
     {
+        $validator = Validator::make($data, [
+            'dashboardRoute' => 'required',
+            '2faRoute' => 'required',
+            'pendingVerificationRoute' => 'required',
+            '2faEmailCommand' => 'required',
+            'requestData' => 'required|array',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }   
+
         if(session()->has("logged_in_user_detail")){
             return response()->json(["status" => true, "message" => "",'url'=> $data['dashboardRoute']], 200);
         }
@@ -98,6 +123,15 @@ class AuthService
 
     public static function handleLogout(array $data = [], $tokenInvalid = null)
     {
+        $validator = Validator::make($data, [
+            'loginRoute' => 'required',
+            'requestData' => 'nullable|array',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }    
+
         $UserLoginService = new UserLoginService;
         $result =  $UserLoginService->IAMlogout();
         $statusCode = $result->getStatusCode();
