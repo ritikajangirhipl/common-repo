@@ -7,6 +7,7 @@ use Vendor\CommonPackage\Services\UserLoginService;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class AuthService
 {
@@ -152,6 +153,42 @@ class AuthService
             }
         }else{
             return response()->json(["status" => false, "message" => "Something went wrong!"],400);
+        }
+    }
+
+    public static function handleAccessToken($loginRoute)
+    {
+        $validator = Validator::make(
+            ['loginRoute' => $loginRoute],
+            [
+                'loginRoute' => 'required',
+            ]
+        );
+    
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        } 
+
+        if(session()->has('logged_in_user_detail')){
+            $loggedInUserDetails = session()->get('logged_in_user_detail');
+            $accessTokenData = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.',  $loggedInUserDetails['data']['access_token'])[1]))));
+            $expireTimestamp = $accessTokenData->exp;
+            $currantTimestamp = Carbon::now()->timestamp;
+            if($currantTimestamp > $expireTimestamp){
+                $UserLoginService = new UserLoginService;
+                $refreshToken = $loggedInUserDetails['data']['refresh_token'];
+                $result =  $UserLoginService->IAMGetNewAccessToken($refreshToken)->getData(true); 
+                if($result['code'] == 200){
+                    $loggedInUserDetails['data']['access_token'] = $result['response']['data']['access_token'];
+                    $loggedInUserDetails['data']['refresh_token'] = $result['response']['data']['refresh_token'];
+                    session()->put('logged_in_user_detail',$loggedInUserDetails);
+                    session()->save();
+                } else {
+                    $message = ($result['code'] == 401 || $result['code'] == 404) ? 'Your session has expired. Please log in again to continue.' : 'Account is not active.';
+                    session()->flush();
+                    return redirect($loginRoute)->with(['alert-type'=>'error','message'=> $message]);
+                }
+            }
         }
     }
 }
