@@ -34,7 +34,7 @@
 .input-password-wrap>i {
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 18px;
     cursor: pointer;
 }
 
@@ -112,7 +112,7 @@
 }
 
 .login-wrapper .form-check .form-check-input{
-    margin-top: 0.8px;
+    margin-top: 4.8px;
 }
 
 .login-wrapper .login-background{
@@ -161,4 +161,14 @@
 	font-size: 12px;
 	font-weight: 900;
 }
+.geoError, .error {
+    font-size: 12px;
+}
 /* end  */
+
+/* Responsive code  */
+@media (max-width: 767px) {
+    .login-wrapper .form_wrapper {
+        padding: 25px 15px 35px;
+    }
+}

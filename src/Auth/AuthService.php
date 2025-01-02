@@ -62,11 +62,11 @@ class AuthService
                     'email' => $result['response']['data']['user']['email'],
                     'code' =>  $verificationCode
                 ]);
-                $cookies = $this->saveLoggedInUserDetailInSession(array_merge($result['response'], ['email' => $data['requestData']['email'], 'password' => $data['requestData']['password'],'remember_me' => $data['requestData']['remember_me']]));
+                $cookies = self::saveLoggedInUserDetailInSession(array_merge($result['response'], ['email' => $data['requestData']['email'], 'password' => $data['requestData']['password'],'remember_me' => $data['requestData']['remember_me']]));
                 $url = $data['2faRoute'];
                 $response = ["status" => true, "message" => "Login successful",'url'=>$url];
             } else if($result['response']['data']['user']['status'] == 'pending'){
-                $response = ["status" => true, "message" => "",'url'=>$data['pendingVerificationRoute']];
+                $response = ["status" => true, "message" => "Account is not active.",'url'=>$data['pendingVerificationRoute']];
             } else {
                 $response = ["status" => false, "message" => "Account is not active."];
                 return response()->json($response, 403);
@@ -78,7 +78,7 @@ class AuthService
         }
     }
 
-    private function saveLoggedInUserDetailInSession($result)
+    private static function saveLoggedInUserDetailInSession($result)
     {
         $cookies = null;
         if($result['remember_me'] && $result['remember_me'] == 'true'){

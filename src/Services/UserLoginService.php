@@ -15,18 +15,18 @@ class UserLoginService
         return config('common.iam_api_url');
     }
 
-    public function IAMlogin(Request $request)
+    public function IAMlogin($data)
     {
-        $credentials = $this->getIAMCredentials($request);
+        $credentials = $this->getIAMCredentials($data);
         $url = $this->iamApiUrl() . '/login';
         Log::info('IAMlogin url = ' . $url);
         $response = $this->IAMPostRequest($url, $credentials);
         return $response;
     }
 
-    private function getIAMCredentials($request): array
+    private function getIAMCredentials($data): array
     {
-        return ['email' => $request['email'], 'password' => $request['password']];
+        return ['email' => $data['email'], 'password' => $data['password']];
     }
 
     public function IAMlogout()
