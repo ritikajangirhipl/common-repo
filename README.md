@@ -21,9 +21,13 @@ composer require vendor/common-repo
 
 
 ############## Add css,js and view files ####################
+
 **Step:1 Run this command** 
+
         php artisan vendor:publish --provider="Vendor\CommonPackage\Providers\CommonServiceProvider" --tag=public
+        
 ############## Add css,js and view files ####################
+
 
 
 
