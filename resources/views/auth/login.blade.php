@@ -4,8 +4,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <title>{{config('app.name')}}</title>
-        <link href="{{asset('assets/images/favicon.svg')}}" rel="icon">
+        <title>{{$data['appName']}}</title>
+        <link href="{{$data['favicon']}}" rel="icon">
         <!-- font-awesome Start  -->
         <link rel="stylesheet" href="{{ asset('vendor/common-repo/css/font-awesome.min.css') }}">
         <!-- Bootstrap css -->
@@ -17,9 +17,9 @@
         <link rel="stylesheet" href="{{ asset('vendor/common-repo/css/login.css') }}">
     </head>
 
-    <body class="{{(config('app.env') == 'staging') ? 'staging-logged-in' : ''}}">
-        @if(config('app.env') == 'staging')
-            @include('banner.button')
+    <body class="{{($data['appEnv'] == 'staging') ? 'staging-logged-in' : ''}}">
+        @if($data['appEnv'] == 'staging')
+            @include('common::banner.button')
         @endif
         <div class="login-wrapper">
             <img src="{{asset('assets/images/loginbg.jpg')}}" class="img-fluid login-background" alt="">
@@ -35,7 +35,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="loginPassword" class="tooltiplabel">{{__('global.password')}}<span class="mailstar text-danger">*</span> 
-                        <span class="tooltipIcon" data-bs-toggle="tooltip" data-bs-placement="top" title="{{__('global.password_hint',['min' => config('app.password_min_length'), 'max' => config('app.password_max_length')])}}"><img src="{{ asset('assets/images/information.png') }}"/></span></label>
+                        <span class="tooltipIcon" data-bs-toggle="tooltip" data-bs-placement="top" title="{{__('global.password_hint',['min' => $data['passwordMinLength'], 'max' => $data['passwordMaxLength']])}}"><img src="{{ asset('assets/images/information.png') }}"/></span></label>
 
                         <div class="input-password-wrap">
                             <input type="password" placeholder="{{__('global.enter').' '.__('global.password')}}" class="form-control" id="loginPassword" name="password" maxlength="32" autocomplete="new-password" value="{{$credentials['password'] ?? ''}}">
@@ -50,8 +50,8 @@
                 </form>
             </div>
         </div>
-        @if(config('app.env') == 'staging')
-            @include('banner.modal')
+        @if($data['appEnv'] == 'staging')
+            @include('common::banner.modal')
         @endif
         
         <!-- Jquery Library -->
@@ -64,8 +64,8 @@
 
        <script>
         $(document).ready(function(){
-            var minPasswordLength  = {{ config('app.password_min_length') }};
-            var maxPasswordLength  = {{ config('app.password_max_length') }};
+            var minPasswordLength  = {{ $data['passwordMinLength'] }};
+            var maxPasswordLength  = {{ $data['passwordMaxLength'] }};
 
             toastr.options = {
                 'closeButton': true,

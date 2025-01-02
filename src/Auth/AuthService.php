@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\View;
 
 class AuthService
 {
-    public static function handleLoginForm(array $sessionData = [], array $cookies = [])
+    public static function handleLoginForm(array $sessionData = [], array $cookies = [], array $data = [])
     {
         $twoFactorAuthStatus = $sessionData['logged_in_user_detail'] ?? [];
         $credentials = [];
@@ -37,6 +37,6 @@ class AuthService
 
         session()->put('previous_url', url()->previous());
 
-        return View::make('common::auth.login', compact('credentials', 'remember'));
+        return View::make('common::auth.login', compact('credentials', 'remember', 'data'));
     }
 }
