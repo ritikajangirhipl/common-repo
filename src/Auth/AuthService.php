@@ -2,8 +2,8 @@
 namespace Vendor\CommonPackage\Auth;
 
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\View;
+use Vendor\CommonPackage\Services\UserLoginService;
 
 class AuthService
 {
@@ -24,7 +24,7 @@ class AuthService
 
         // 2FA Status Handling
         if (isset($twoFactorAuthStatus['data']['2fa_status']) && !$twoFactorAuthStatus['data']['2fa_status']) {
-            $UserLoginService = App::make('App\Services\UserLoginService');
+            $UserLoginService = new UserLoginService();
             $result = $UserLoginService->IAMlogout();
             $statusCode = $result->getStatusCode();
             if ($statusCode == 200) {

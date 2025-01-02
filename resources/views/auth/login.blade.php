@@ -17,16 +17,16 @@
         <link rel="stylesheet" href="{{ asset('vendor/common-repo/css/login.css') }}">
     </head>
 
-    <body class="{{($data['appEnv'] == 'staging') ? 'staging-logged-in' : ''}}">
+    <body>
         @if($data['appEnv'] == 'staging')
             @include('common::banner.button')
         @endif
         <div class="login-wrapper">
-            <img src="{{asset('assets/images/loginbg.jpg')}}" class="img-fluid login-background" alt="">
+            <img src="{{$data['loginbg']}}" class="img-fluid login-background" alt="">
             <div class="container">
                 <form class="form_wrapper" id="loginForm" method="POST">
                     <div class="top-content-login">
-                    <img src="{{asset('assets/images/logo.png')}}" alt="logo" title="logo-img">
+                    <img src="{{$data['logo']}}" alt="logo" title="logo-img">
                         <h3 class="login-title">{{__('global.login')}}</h3>
                     </div>
                     <div class="mb-3">
@@ -35,7 +35,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="loginPassword" class="tooltiplabel">{{__('global.password')}}<span class="mailstar text-danger">*</span> 
-                        <span class="tooltipIcon" data-bs-toggle="tooltip" data-bs-placement="top" title="{{__('global.password_hint',['min' => $data['passwordMinLength'], 'max' => $data['passwordMaxLength']])}}"><img src="{{ asset('assets/images/information.png') }}"/></span></label>
+                        <span class="tooltipIcon" data-bs-toggle="tooltip" data-bs-placement="top" title="{{__('global.password_hint',['min' => $data['passwordMinLength'], 'max' => $data['passwordMaxLength']])}}"><img src="{{ $data['infoIcon'] }}"/></span></label>
 
                         <div class="input-password-wrap">
                             <input type="password" placeholder="{{__('global.enter').' '.__('global.password')}}" class="form-control" id="loginPassword" name="password" maxlength="32" autocomplete="new-password" value="{{$credentials['password'] ?? ''}}">

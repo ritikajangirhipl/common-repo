@@ -16,6 +16,7 @@ class CommonServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../../public/assets' => public_path('vendor/common-repo'),
         ], 'public');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/common.php', 'common');
     }
 
     /**
