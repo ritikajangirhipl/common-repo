@@ -158,17 +158,6 @@ class AuthService
 
     public static function handleAccessToken($loginRoute)
     {
-        $validator = Validator::make(
-            ['loginRoute' => $loginRoute],
-            [
-                'loginRoute' => 'required',
-            ]
-        );
-    
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        } 
-
         if(session()->has('logged_in_user_detail')){
             $loggedInUserDetails = session()->get('logged_in_user_detail');
             $accessTokenData = json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.',  $loggedInUserDetails['data']['access_token'])[1]))));
