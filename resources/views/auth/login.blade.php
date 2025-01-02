@@ -164,7 +164,7 @@
                 e.preventDefault();
                 $('body').find('.contactError').remove();
                 if($(this).valid()){
-                    var url = '{{$data("loginRoute")}}';
+                    var url = '{{$data["loginRoute"]}}';
                     var email = $('input[name=email]').val();
                     var password = $('input[name=password]').val();
                     var remember_me = $('input[name=remember_me]').is(":checked");
