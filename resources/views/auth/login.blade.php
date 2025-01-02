@@ -27,26 +27,26 @@
                 <form class="form_wrapper" id="loginForm" method="POST">
                     <div class="top-content-login">
                     <img src="{{$data['logo']}}" alt="logo" title="logo-img">
-                        <h3 class="login-title">{{__('global.login')}}</h3>
+                        <h3 class="login-title">Login</h3>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">{{__('global.email')}}<span class="mailstar text-danger">*</span></label>
-                        <input type="text" class="form-control" placeholder="{{__('global.enter').' '.__('global.email')}}" id="exampleInputEmail1" name="email" value="{{$credentials['email'] ?? ''}}">
+                        <label for="exampleInputEmail1" class="form-label">Email<span class="mailstar text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Email" id="exampleInputEmail1" name="email" value="{{$credentials['email'] ?? ''}}">
                     </div>
                     <div class="mb-3">
-                        <label for="loginPassword" class="tooltiplabel">{{__('global.password')}}<span class="mailstar text-danger">*</span> 
-                        <span class="tooltipIcon" data-bs-toggle="tooltip" data-bs-placement="top" title="{{__('global.password_hint',['min' => $data['passwordMinLength'], 'max' => $data['passwordMaxLength']])}}"><img src="{{ $data['infoIcon'] }}"/></span></label>
+                        <label for="loginPassword" class="tooltiplabel">Password<span class="mailstar text-danger">*</span> 
+                        <span class="tooltipIcon" data-bs-toggle="tooltip" data-bs-placement="top" title="Password must be between {{$data['passwordMinLength']}} and {{$data['passwordMaxLength']}} characters in length"><img src="{{ $data['infoIcon'] }}"/></span></label>
 
                         <div class="input-password-wrap">
-                            <input type="password" placeholder="{{__('global.enter').' '.__('global.password')}}" class="form-control" id="loginPassword" name="password" maxlength="32" autocomplete="new-password" value="{{$credentials['password'] ?? ''}}">
+                            <input type="password" placeholder="Enter Password" class="form-control" id="loginPassword" name="password" maxlength="32" autocomplete="new-password" value="{{$credentials['password'] ?? ''}}">
                             <i class="fa fa-eye-slash" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
                         </div>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember_me" {{ $remember ? 'checked' : '' }}>
-                        <label class="form-check-label" for="exampleCheck1">{{__('global.remember_me')}}</label>
+                        <label class="form-check-label" for="exampleCheck1">Remember Me</label>
                     </div>
-                    <button type="submit" class="nbtn nextstepbtn" id="loginSubmit">{{__('global.submit')}}</button>
+                    <button type="submit" class="nbtn nextstepbtn" id="loginSubmit">Submit</button>
                 </form>
             </div>
         </div>
