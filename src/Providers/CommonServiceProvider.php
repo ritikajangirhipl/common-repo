@@ -17,6 +17,9 @@ class CommonServiceProvider extends ServiceProvider
             __DIR__.'/../../public/assets' => public_path('vendor/common-repo'),
         ], 'public');
         $this->mergeConfigFrom(__DIR__ . '/../../config/common.php', 'common');
+        $this->commands([
+            \Vendor\Package\Commands\Send2FACode ::class,
+        ]);
     }
 
     /**

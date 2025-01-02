@@ -83,7 +83,7 @@ class AuthService
                 $verificationCode = generateRandomString(config('common.two_factor_auth_code_length'));
                 $result['response']['data']['2fa_status'] = false;
                 $result['response']['data']['2fa_code'] = encrypt($verificationCode);
-                Artisan::call($data['2faEmailCommand'], [
+                Artisan::call('sending:2fa', [
                     'email' => $result['response']['data']['user']['email'],
                     'code' =>  $verificationCode
                 ]);
