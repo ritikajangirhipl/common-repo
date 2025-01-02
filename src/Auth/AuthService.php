@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Cookie;
 
 class AuthService
 {
-    public static function handleLoginForm(array $sessionData = [], array $cookies = [], array $data = [])
+    public static function handleLoginForm(array $data = [])
     {
         $twoFactorAuthStatus = session()->has("logged_in_user_detail") ? session()->get("logged_in_user_detail") : [];
         $credentials = [];
@@ -94,5 +94,31 @@ class AuthService
         session()->put('logged_in_user_detail',$result);
         session()->save();
         return $cookies;
+    }
+
+    public static function handleLogout(array $data = [], $tokenInvalid = null)
+    {
+        $UserLoginService = new UserLoginService;
+        $result =  $UserLoginService->IAMlogout();
+        $statusCode = $result->getStatusCode();
+        if($statusCode == 200){
+            if($result->original['code'] == 200){
+                auth()->logout();
+                request()->session()->invalidate();
+                Session::flush();
+                if(isset($data['requestData']['message']) && $data['requestData']['message'] == 'unauthorized_user'){
+                    return redirect($data['loginRoute'])->with(['alert-type'=>'error','message'=>'Unauthorized user!']);
+                }else if(!is_null($tokenInvalid)){
+                    return response()->json(["status" => false, "message" => "Jwt Token is invalid, so you are logout forcefully!",'url'=> $data['loginRoute']],400);
+                }else if(isset($data['requestData']['sleep_mode']) && $data['requestData']['sleep_mode']){
+                    return redirect($data['loginRoute'])->with(['alert-type'=>'success','message'=>'Logout successfully!']);
+                }else if(isset($data['requestData']['message']) && $data['requestData']['message'] == 'invalid_token'){
+                    return redirect($data['loginRoute'])->with(['alert-type'=>'error','message'=>'Jwt Token is invalid, so you are logout forcefully!']);
+                }
+                return response()->json(["status" => true, "message" => "Logout successfully!",'url'=> $data['loginRoute']]);
+            }
+        }else{
+            return response()->json(["status" => false, "message" => "Something went wrong!"],400);
+        }
     }
 }
