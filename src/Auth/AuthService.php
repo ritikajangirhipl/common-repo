@@ -34,7 +34,10 @@ class AuthService
                 }
             }
         }
-
+        $data['appName'] = config('common.name');
+        $data['appEnv'] = config('common.env');
+        $data['passwordMinLength'] = config('common.password_min_length');
+        $data['passwordMaxLength'] = config('common.password_max_length');
         session()->put('previous_url', url()->previous());
 
         return View::make('common::auth.login', compact('credentials', 'remember', 'data'));
