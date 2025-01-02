@@ -64,7 +64,6 @@ class AuthService
             'dashboardRoute' => 'required',
             '2faRoute' => 'required',
             'pendingVerificationRoute' => 'required',
-            '2faEmailCommand' => 'required',
             'requestData' => 'required|array',
         ]);
 
@@ -80,7 +79,7 @@ class AuthService
         $result =  $UserLoginService->IAMlogin($data['requestData']);
         if($result['code'] == 200){
             if($result['response']['data']['user']['status'] == 'active'){
-                $verificationCode = generateRandomString(config('common.two_factor_auth_code_length'));
+                $verificationCode = generateRandom2FaString(config('common.two_factor_auth_code_length'));
                 $result['response']['data']['2fa_status'] = false;
                 $result['response']['data']['2fa_code'] = encrypt($verificationCode);
                 Artisan::call('sending:2fa', [

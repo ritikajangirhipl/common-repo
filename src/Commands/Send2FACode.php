@@ -27,11 +27,7 @@ class Send2FACode extends Command
         $bodyTemplate  = config('common.2fa_body');
         $subject       = config('common.2fa_subject');
         $body = sprintf($bodyTemplate, $code);
-        \Illuminate\Support\Facades\Mail::raw($body, function ($message) use ($email, $subject, $senderAddress, $senderName) {
-            $message->to($email)
-                    ->subject($subject)
-                    ->from($senderAddress, $senderName);
-        });
+        
         //gomail -t <to_email_address> -f <email_sender_address> -n <email_sender_name> -b '<email_2fa_body>'
         $command = escapeshellcmd("gomail -t $email -f $senderAddress -s \"$subject\" -n \"$senderName\" -b \"$body\"");
 
