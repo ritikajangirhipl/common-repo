@@ -18,7 +18,7 @@ class CommonServiceProvider extends ServiceProvider
         ], 'public');
         $this->mergeConfigFrom(__DIR__ . '/../../config/common.php', 'common');
         $this->commands([
-            \Vendor\Package\Commands\Send2FACode ::class,
+            \Vendor\CommonPackage\Commands\Send2FACode ::class,
         ]);
     }
 
