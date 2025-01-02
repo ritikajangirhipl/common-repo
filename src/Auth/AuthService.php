@@ -11,13 +11,13 @@ class AuthService
 {
     public static function handleLoginForm(array $sessionData = [], array $cookies = [], array $data = [])
     {
-        $twoFactorAuthStatus = $sessionData['logged_in_user_detail'] ?? [];
+        $twoFactorAuthStatus = session()->has("logged_in_user_detail") ? session()->get("logged_in_user_detail") : [];
         $credentials = [];
         $remember = false;
 
         // Process cookie data if provided
-        if (!empty($cookies['user_credentials'])) {
-            $decoded = json_decode($cookies['user_credentials'], true);
+        if (request()->hasCookie('user_credentials')) {
+            $decoded = json_decode(request()->cookie('user_credentials'), true);
             if ($decoded) {
                 $credentials = $decoded;
                 $remember = true; 
