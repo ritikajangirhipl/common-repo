@@ -26,7 +26,7 @@ class UserLoginService
 
     private function getIAMCredentials($request): array
     {
-        return ['email' => $request->input('email'), 'password' => $request->input('password')];
+        return ['email' => $request['email'], 'password' => $request['password']];
     }
 
     public function IAMlogout()
