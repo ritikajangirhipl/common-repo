@@ -1,29 +1,26 @@
 {
-    "name": "vendor/common-repo",
+    "name": "vendor/common-repo-amlbot",
     "description": "A common package for Laravel",
     "type": "library",
     "license": "MIT",
     "authors": [
       {
-        "name": "Ritika Jangir",
-        "email": "ritikajangir.hipl@gmail.com"
+        "name": "Mahesh Yadav",
+        "email": "maheshyadav.hipl@gmail.com"
       }
     ],
     "require": {
       "php": "^8.0"
     },
-    "autoload": {
-      "files": [
-        "src/helpers.php"
-      ],
+    "autoload": {     
       "psr-4": {
-        "Vendor\\CommonPackage\\": "src/"
+        "Vendor\\CommonPackageAmlBot\\": "src/"
       }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Vendor\\CommonPackage\\Providers\\CommonServiceProvider"
+                "Vendor\\CommonPackageAmlBot\\Providers\\CommonAmlBotServiceProvider"
             ]
         }
     }
