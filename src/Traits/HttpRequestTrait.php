@@ -1,6 +1,6 @@
 <?php
 
-namespace Vendor\CommonPackage\Traits;
+namespace Common\CommonPackage\Traits;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;

@@ -1,9 +1,9 @@
 <?php
-namespace Vendor\CommonPackage\Auth;
+namespace Common\CommonPackage\Auth;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
-use Vendor\CommonPackage\Services\UserLoginService;
+use Common\CommonPackage\Services\UserLoginService;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;

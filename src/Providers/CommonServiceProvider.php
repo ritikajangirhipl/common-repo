@@ -1,5 +1,5 @@
 <?php
-namespace Vendor\CommonPackage\Providers;
+namespace Common\CommonPackage\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -12,13 +12,13 @@ class CommonServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'common');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'common');
         $this->publishes([
-            __DIR__.'/../../public/assets' => public_path('vendor/common-repo'),
+            __DIR__.'/../public/assets' => public_path('common/common-repo'),
         ], 'public');
-        $this->mergeConfigFrom(__DIR__ . '/../../config/common.php', 'common');
+        $this->mergeConfigFrom(__DIR__ . '/../config/common.php', 'common');
         $this->commands([
-            \Vendor\CommonPackage\Commands\Send2FACode ::class,
+            \Common\CommonPackage\Commands\Send2FACode ::class,
         ]);
     }
 

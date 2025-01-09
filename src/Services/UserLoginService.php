@@ -1,8 +1,8 @@
 <?php
 
-namespace Vendor\CommonPackage\Services;
+namespace Common\CommonPackage\Services;
 
-use Vendor\CommonPackage\Traits\HttpRequestTrait;
+use Common\CommonPackage\Traits\HttpRequestTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 

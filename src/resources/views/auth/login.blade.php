@@ -7,14 +7,14 @@
         <title>{{$data['appName']}}</title>
         <link href="{{$data['favicon']}}" rel="icon">
         <!-- font-awesome Start  -->
-        <link rel="stylesheet" href="{{ asset('vendor/common-repo/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('common/common-repo/css/font-awesome.min.css') }}">
         <!-- Bootstrap css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/common-repo/css/bootstrap.min.css') }}"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('common/common-repo/css/bootstrap.min.css') }}"> 
         <!-- toastr css -->
-        <link rel="stylesheet" href="{{ asset('vendor/common-repo/toastr/toastr.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('common/common-repo/toastr/toastr.min.css') }}">
         <!-- style css -->
         <link rel="stylesheet" href="{{ asset('assets/css/theme.css')}}">
-        <link rel="stylesheet" href="{{ asset('vendor/common-repo/css/login.css') }}">
+        <link rel="stylesheet" href="{{ asset('common/common-repo/css/login.css') }}">
     </head>
 
     <body>
@@ -55,12 +55,12 @@
         @endif
         
         <!-- Jquery Library -->
-        <script src="{{asset('vendor/common-repo/js/jquery-3.7.1.min.js')}}"></script>
+        <script src="{{asset('common/common-repo/js/jquery-3.7.1.min.js')}}"></script>
         <!-- toastr js -->
-        <script src="{{ asset('vendor/common-repo/toastr/toastr.min.js') }}"></script>
+        <script src="{{ asset('common/common-repo/toastr/toastr.min.js') }}"></script>
         <!-- Bootstrap Js -->
-        <script src="{{asset('vendor/common-repo/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('vendor/common-repo/js/jquery.validate.min.js')}}"></script> 
+        <script src="{{asset('common/common-repo/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('common/common-repo/js/jquery.validate.min.js')}}"></script> 
 
        <script>
         $(document).ready(function(){

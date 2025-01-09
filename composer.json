@@ -1,5 +1,5 @@
 {
-    "name": "vendor/common-repo",
+    "name": "common/common-repo",
     "description": "A common package for Laravel",
     "type": "library",
     "license": "MIT",
@@ -17,13 +17,13 @@
         "src/helpers.php"
       ],
       "psr-4": {
-        "Vendor\\CommonPackage\\": "src/"
+        "Common\\CommonPackage\\": "src/"
       }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Vendor\\CommonPackage\\Providers\\CommonServiceProvider"
+                "Common\\CommonPackage\\Providers\\CommonServiceProvider"
             ]
         }
     }
