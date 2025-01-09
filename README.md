@@ -12,7 +12,7 @@
 composer config --global --auth github-oauth.github.com acceess_token
 
 # Step3: run this command
-composer require vendor/common-repo
+composer require common/common-repo
 
 ################# End custome package use in the your project  ###########
 
@@ -24,7 +24,7 @@ composer require vendor/common-repo
 
 **Step:1 Run this command** 
 
-        php artisan vendor:publish --provider="Vendor\CommonPackage\Providers\CommonServiceProvider" --tag=public
+        php artisan vendor:publish --provider="Common\CommonPackage\Providers\CommonServiceProvider" --tag=public
         
 ############## Add css,js and view files ####################
 
@@ -37,9 +37,9 @@ composer require vendor/common-repo
 #################### Start For AMLBOt ##########################
 
 #  use for AMLBotHttpTrait trait in the Controller 
-use Vendor\CommonPackage\Traits\AMLBotHttpTrait;
+use Common\CommonPackage\Traits\AMLBotHttpTrait;
 
 #  use for AMLBotException trait in the Controller 
-use Vendor\CommonPackage\Traits\AMLBotException;
+use Common\CommonPackage\Traits\AMLBotException;
 
 #################### End For AMLBOt ##########################
