@@ -12,7 +12,7 @@ class CommonAmlBotServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/common.php', 'common');
+        $this->mergeConfigFrom(__DIR__ . '/../config/common.php', 'common');
     }
 
     /**
