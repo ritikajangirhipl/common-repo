@@ -2,7 +2,7 @@
     "name": "vendor/common-repo-amlbot",
     "description": "A common package for Laravel",
     "type": "library",
-    "license": "MIT",
+    "license": "MIT", 
     "authors": [
       {
         "name": "Mahesh Yadav",
